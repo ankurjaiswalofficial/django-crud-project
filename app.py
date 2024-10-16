@@ -1,16 +1,12 @@
 import streamlit as st
 import requests
 
-# Base URL for the Django REST API
 BASE_URL = "http://127.0.0.1:8000/api"
 
-# Streamlit UI
 st.title("Django REST API Tester")
 
-# Select the entity type
 entity_type = st.sidebar.selectbox("Select Entity", ["Categories", "Products"])
 
-# Function to display all entities
 def display_all_entities(entity):
     response = requests.get(f"{BASE_URL}/{entity.lower()}/")
     if response.status_code == 200:
@@ -19,17 +15,16 @@ def display_all_entities(entity):
     else:
         st.error("Failed to fetch data")
 
-# Function to create a new entity
 def create_entity(entity):
     name = st.text_input("Name", key="name")
-    if entity == "Product":
+    if entity == "Products":
         description = st.text_area("Description")
         price = st.number_input("Price", min_value=0.0, step=0.01)
         category_id = st.number_input("Category ID", min_value=1, step=1)
 
     if st.button("Create"):
         data = {"name": name}
-        if entity == "Product":
+        if entity == "Products":
             data.update({
                 "description": description,
                 "price": price,
@@ -41,18 +36,17 @@ def create_entity(entity):
         else:
             st.error("Failed to create entity")
 
-# Function to update an entity
 def update_entity(entity):
     entity_id = st.number_input(f"{entity} ID", min_value=1, step=1)
     name = st.text_input("New Name", key="update_name")
-    if entity == "Product":
+    if entity == "Products":
         description = st.text_area("New Description")
         price = st.number_input("New Price", min_value=0.0, step=0.01)
         category_id = st.number_input("New Category ID", min_value=1, step=1)
 
     if st.button("Update"):
         data = {"name": name}
-        if entity == "Product":
+        if entity == "Products":
             data.update({
                 "description": description,
                 "price": price,
@@ -64,7 +58,6 @@ def update_entity(entity):
         else:
             st.error("Failed to update entity")
 
-# Function to delete an entity
 def delete_entity(entity):
     entity_id = st.number_input(f"{entity} ID to Delete", min_value=1, step=1)
     if st.button("Delete"):
@@ -74,7 +67,6 @@ def delete_entity(entity):
         else:
             st.error("Failed to delete entity")
 
-# Function to search/filter entities
 def search_entities(entity):
     search_term = st.text_input("Search Term (Name)")
     created_at = st.text_input("Filter by Date (YYYY-MM-DD)")
@@ -93,7 +85,6 @@ def search_entities(entity):
         else:
             st.error("Failed to search entities")
 
-# Display entity options
 st.sidebar.subheader(f"{entity_type} Actions")
 action = st.sidebar.selectbox("Select Action", ["View All", "Create", "Update", "Delete", "Search/Filter"])
 

@@ -15,8 +15,9 @@ class CategoryViewSet(viewsets.ModelViewSet):
         created_at = self.request.query_params.get('created_at', None)
         if created_at:
             date_obj = parse_date(created_at)
+            print(created_at, date_obj)
             if date_obj:
-                queryset = queryset.filter(created_at=date_obj)
+                queryset = queryset.filter(created_at__date=date_obj)
         return queryset
 
 
@@ -33,5 +34,5 @@ class ProductViewSet(viewsets.ModelViewSet):
         if created_at:
             date_obj = parse_date(created_at)
             if date_obj:
-                queryset = queryset.filter(created_at=date_obj)
+                queryset = queryset.filter(created_at__date=date_obj)
         return queryset
