@@ -2,10 +2,6 @@
 
 ---
 
-![Demo Video](./video/CRUD-video.mkv)
-
----
-
 #### Step-1: initiate the virtual environment in python
 
 ```bash
