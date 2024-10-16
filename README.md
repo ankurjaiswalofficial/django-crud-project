@@ -1,6 +1,6 @@
-# DJANDO-CRUD-APP
+# DJANGO-CRUD-APP
 
-___
+---
 
 #### Step-1: initiate the virtual environment in python
 
@@ -8,7 +8,7 @@ ___
 python3 -m venv venv
 ```
 
-___
+---
 
 #### Step-2: activate the virtual environment inside the git bash
 
@@ -16,7 +16,7 @@ ___
 venv/bin/activate
 ```
 
-___
+---
 
 #### Step-3 Install all requirements
 
@@ -24,6 +24,6 @@ ___
 pip install -r requirements.txt
 ```
 
-___
+---
 
 #### Step-4
