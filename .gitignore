@@ -1,5 +1,4 @@
 /venv/
 db.sqlite3
 TASK.md
-migrations
 __pycache__
