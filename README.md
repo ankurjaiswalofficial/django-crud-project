@@ -20,13 +20,19 @@ venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#### Step-4 Run the server
+#### Step-4 Migrate all data in sqlite.db
+
+```bash
+python3 manage.py migrate
+```
+
+#### Step-5 Run the server
 
 ```bash
 python3 manage.py runserver
 ```
 
-## If you want to test this based on ui simply after step-4 run
+## If you want to test this based on ui simply after step-5 run
 
 ```bash
 stremlit run app.py
